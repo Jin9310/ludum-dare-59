@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ycwhnf6y1xj6"]
+
+[ext_resource type="Script" uid="uid://w3n7okmhavmv" path="res://Scripts/signal_lost.gd" id="1_72hd6"]
+[ext_resource type="Texture2D" uid="uid://pydl30ykyg2y" path="res://Art/icon.svg" id="1_hyr48"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72hd6"]
+radius = 7.0
+
+[node name="Signal_lost" type="Area2D" unique_id=2030204222]
+script = ExtResource("1_72hd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440204879]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hyr48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1472806370]
+shape = SubResource("CircleShape2D_72hd6")
+
+[node name="Timer" type="Timer" parent="." unique_id=124991020]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

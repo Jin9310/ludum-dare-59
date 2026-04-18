@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddy62rikl0aww" path="res://Scripts/the_game.gd" id="1_ykltw"]
 [ext_resource type="PackedScene" uid="uid://bwj3lx0ejywgt" path="res://Scenes/main.tscn" id="2_2p1rv"]
-[ext_resource type="Texture2D" uid="uid://bsct3xs1ftbw1" path="res://Art/screen_A.png" id="3_2p1rv"]
-[ext_resource type="Texture2D" uid="uid://pydl30ykyg2y" path="res://Art/icon.svg" id="4_xtsln"]
+[ext_resource type="Texture2D" uid="uid://pydl30ykyg2y" path="res://Art/icon.svg" id="3_2p1rv"]
 
 [node name="TheGame" type="Node2D" unique_id=389135310]
 script = ExtResource("1_ykltw")
@@ -13,60 +12,48 @@ script = ExtResource("1_ykltw")
 [node name="Main" parent="GameViewport" unique_id=843892690 instance=ExtResource("2_2p1rv")]
 
 [node name="A" type="Node2D" parent="." unique_id=1475661929]
-position = Vector2(33, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="A" unique_id=1004225911]
 position = Vector2(82.25, 42)
+scale = Vector2(0.58203125, 0.375)
 texture = ExtResource("3_2p1rv")
 
 [node name="MonitorA" type="TextureRect" parent="A" unique_id=1276488321]
 offset_left = 50.0
-offset_top = 24.0
+offset_top = 25.0
 offset_right = 82.0
-offset_bottom = 42.0
+offset_bottom = 43.0
 scale = Vector2(0.2, 0.2)
 
 [node name="B" type="Node2D" parent="." unique_id=305811396]
-position = Vector2(33, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="B" unique_id=865075108]
-position = Vector2(97.5, 109.00001)
-scale = Vector2(0.88281244, 0.5507812)
-texture = ExtResource("4_xtsln")
 
 [node name="MonitorB" type="TextureRect" parent="B" unique_id=1251435231]
 offset_left = 50.0
-offset_top = 80.0
+offset_top = 70.0
 offset_right = 90.0
-offset_bottom = 120.0
+offset_bottom = 110.0
 scale = Vector2(0.3, 0.3)
 
 [node name="C" type="Node2D" parent="." unique_id=1400614188]
-position = Vector2(33, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="C" unique_id=517824736]
-position = Vector2(199.00002, 88)
-scale = Vector2(0.6953125, 0.37500003)
-texture = ExtResource("4_xtsln")
 
 [node name="MonitorC" type="TextureRect" parent="C" unique_id=1694539980]
-offset_left = 160.0
+offset_left = 150.0
 offset_top = 70.0
-offset_right = 180.0
+offset_right = 170.0
 offset_bottom = 93.0
 scale = Vector2(0.2, 0.2)
 
 [node name="D" type="Node2D" parent="." unique_id=866844308]
-position = Vector2(33, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="D" unique_id=533919618]
-position = Vector2(179, 134)
-scale = Vector2(0.38281256, 0.2421875)
-texture = ExtResource("4_xtsln")
 
 [node name="MonitorD" type="TextureRect" parent="D" unique_id=163159790]
-offset_left = 160.0
-offset_top = 125.0
-offset_right = 180.0
-offset_bottom = 148.0
+offset_left = 70.0
+offset_top = 130.0
+offset_right = 90.0
+offset_bottom = 153.0
 scale = Vector2(0.1, 0.1)

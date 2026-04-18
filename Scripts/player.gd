@@ -2,11 +2,11 @@ class_name Player
 extends CharacterBody2D
 
 # -- Tuning --
-const GRAVITY = 400.0
-const MOVE_SPEED = 30.0
-const JUMP_FORCE = 50.0
-const DOUBLE_JUMP_FORCE = 60.0
-const DASH_SPEED = 60.0
+const GRAVITY = 450.0
+const MOVE_SPEED = 100.0
+const JUMP_FORCE = 200.0
+const DOUBLE_JUMP_FORCE = 150.0
+const DASH_SPEED = 250.0
 const DASH_DURATION = 0.18
 const DASH_COOLDOWN = 0.6
 const WALL_BOUNCE = 0.5
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		has_double_jumped = false
 
 	# -- Horizontal movement --
-	var dir = Input.get_axis("ui_left", "ui_right")
+	var dir = Input.get_axis("left", "right")
 	if dir != 0.0:
 		velocity.x = dir * MOVE_SPEED
 		last_direction = dir
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 
 func _handle_input(delta: float) -> void:
 	# -- Jump --
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			_jump(JUMP_FORCE)
 		elif can_double_jump and not has_double_jumped:
@@ -74,7 +74,7 @@ func _handle_input(delta: float) -> void:
 	if dash_cooldown_timer > 0.0:
 		dash_cooldown_timer -= delta
 
-	if Input.is_action_just_pressed("ui_select") and can_dash:
+	if Input.is_action_just_pressed("dash") and can_dash:
 		if dash_cooldown_timer <= 0.0:
 			_dash()
 

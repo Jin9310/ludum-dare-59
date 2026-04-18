@@ -1,3 +1,9 @@
 extends Node
 
-var platform_speed: float = 25.0
+# 50 max?
+# 25 starting speed
+var base_platform_speed: float = 25.0
+var current_platform_speed: float
+var speed_incremet: float = 5.0
+
+var game_over: bool = false
