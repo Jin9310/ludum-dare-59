@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cuoldl832qmyn"]
+
+[ext_resource type="Script" uid="uid://fkvllt21j270" path="res://Scripts/floor.gd" id="1_agfsv"]
+[ext_resource type="Texture2D" uid="uid://btib047prplg8" path="res://Art/platform.png" id="1_nvnu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agfsv"]
+size = Vector2(32, 2)
+
+[node name="Floor" type="StaticBody2D" unique_id=365746740]
+script = ExtResource("1_agfsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1016511560]
+texture = ExtResource("1_nvnu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1458121951]
+shape = SubResource("RectangleShape2D_agfsv")
+one_way_collision = true

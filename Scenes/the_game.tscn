@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dy6dd0hr3iawu"]
+
+[ext_resource type="Script" uid="uid://ddy62rikl0aww" path="res://Scripts/the_game.gd" id="1_ykltw"]
+[ext_resource type="PackedScene" uid="uid://bwj3lx0ejywgt" path="res://Scenes/main.tscn" id="2_2p1rv"]
+[ext_resource type="Texture2D" uid="uid://pydl30ykyg2y" path="res://Art/icon.svg" id="3_2p1rv"]
+
+[node name="TheGame" type="Node2D" unique_id=389135310]
+script = ExtResource("1_ykltw")
+
+[node name="GameViewport" type="SubViewport" parent="." unique_id=1858667600]
+
+[node name="Main" parent="GameViewport" unique_id=843892690 instance=ExtResource("2_2p1rv")]
+
+[node name="A" type="Node2D" parent="." unique_id=1475661929]
+
+[node name="Sprite2D" type="Sprite2D" parent="A" unique_id=1004225911]
+position = Vector2(82.25, 42)
+scale = Vector2(0.58203125, 0.375)
+texture = ExtResource("3_2p1rv")
+
+[node name="MonitorA" type="TextureRect" parent="A" unique_id=1276488321]
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 82.0
+offset_bottom = 43.0
+scale = Vector2(0.2, 0.2)
+
+[node name="B" type="Node2D" parent="." unique_id=305811396]
+
+[node name="Sprite2D" type="Sprite2D" parent="B" unique_id=865075108]
+
+[node name="MonitorB" type="TextureRect" parent="B" unique_id=1251435231]
+offset_left = 50.0
+offset_top = 70.0
+offset_right = 90.0
+offset_bottom = 110.0
+scale = Vector2(0.3, 0.3)
+
+[node name="C" type="Node2D" parent="." unique_id=1400614188]
+
+[node name="Sprite2D" type="Sprite2D" parent="C" unique_id=517824736]
+
+[node name="MonitorC" type="TextureRect" parent="C" unique_id=1694539980]
+offset_left = 150.0
+offset_top = 70.0
+offset_right = 170.0
+offset_bottom = 93.0
+scale = Vector2(0.2, 0.2)
+
+[node name="D" type="Node2D" parent="." unique_id=866844308]
+
+[node name="Sprite2D" type="Sprite2D" parent="D" unique_id=533919618]
+
+[node name="MonitorD" type="TextureRect" parent="D" unique_id=163159790]
+offset_left = 70.0
+offset_top = 130.0
+offset_right = 90.0
+offset_bottom = 153.0
+scale = Vector2(0.1, 0.1)

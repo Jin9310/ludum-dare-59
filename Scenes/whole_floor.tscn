@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2mabg1tienpt"]
+
+[ext_resource type="Texture2D" uid="uid://b1wq5tcj458me" path="res://Art/whole_floor.png" id="1_5twhf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr0fe"]
+size = Vector2(160, 2)
+
+[node name="whole_floor" type="StaticBody2D" unique_id=1224155618]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=877846419]
+shape = SubResource("RectangleShape2D_vr0fe")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1939496514]
+texture = ExtResource("1_5twhf")

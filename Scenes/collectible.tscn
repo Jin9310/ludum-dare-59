@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cgvx4s3uqpc05"]
+
+[ext_resource type="Script" uid="uid://nr8vww3r7a1k" path="res://Scripts/collectible.gd" id="1_fwdfn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_athsx"]
+radius = 4.1231055
+
+[node name="Collectible" type="Area2D" unique_id=1450239711]
+script = ExtResource("1_fwdfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2023733642]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=122429428]
+shape = SubResource("CircleShape2D_athsx")
+
+[node name="Label" type="Label" parent="." unique_id=1409223376]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1009054968]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0

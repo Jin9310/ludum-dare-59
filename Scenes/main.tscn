@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bwj3lx0ejywgt"]
+
+[ext_resource type="PackedScene" uid="uid://1ullwmg25pd0" path="res://Scenes/player.tscn" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cuoldl832qmyn" path="res://Scenes/floor.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bqsdk2jqanmbs" path="res://Scenes/floor_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dnfh86t644bgx" path="res://Scenes/wall.tscn" id="4_jjvhh"]
+
+[node name="Main" type="Node2D" unique_id=843892690]
+
+[node name="Player" parent="." unique_id=1186402769 instance=ExtResource("1_8gbba")]
+position = Vector2(168, 28)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=425913979]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1145862062]
+z_index = -2
+offset_right = 461.0
+offset_bottom = 505.0
+color = Color(0.90588236, 0.8352941, 0.7019608, 1)
+
+[node name="Floor" parent="." unique_id=365746740 instance=ExtResource("2_jjvhh")]
+position = Vector2(168, 38)
+
+[node name="FloorSpawner" parent="." unique_id=1513364070 instance=ExtResource("3_8gbba")]
+
+[node name="Wall" parent="." unique_id=1551307656 instance=ExtResource("4_jjvhh")]
+position = Vector2(36, 90)
+
+[node name="Wall2" parent="." unique_id=425821849 instance=ExtResource("4_jjvhh")]
+position = Vector2(292, 91)
