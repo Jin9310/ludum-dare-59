@@ -24,6 +24,7 @@ var dash_direction: float = 1.0
 var last_direction: float = 1.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	add_to_group("player")
@@ -42,13 +43,16 @@ func _physics_process(delta: float) -> void:
 	# -- Gravity --
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+		anim.play("jump")
 	else:
+		anim.play("idle")
 		velocity.y = 0.0
 		has_double_jumped = false
 
 	# -- Horizontal movement --
 	var dir = Input.get_axis("left", "right")
 	if dir != 0.0:
+		anim.play("run")
 		velocity.x = dir * MOVE_SPEED
 		last_direction = dir
 	else:

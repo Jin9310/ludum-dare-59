@@ -1,22 +1,103 @@
 [gd_scene format=3 uid="uid://1ullwmg25pd0"]
 
 [ext_resource type="Script" uid="uid://bkxbknd6xsw0p" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://dxmp12qs0cmrv" path="res://Art/player.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dfjbib2ekfv63" path="res://Art/human1-Sheet.png" id="2_cvnsp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
+radius = 4.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "jump"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgqql"]
+_data = {
+&"RESET": SubResource("Animation_cvnsp"),
+&"idle": SubResource("Animation_6t5aa"),
+&"jump": SubResource("Animation_vgqql"),
+&"run": SubResource("Animation_fkybt")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=1186402769]
 script = ExtResource("1_v0iea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1132778825]
 texture = ExtResource("2_cvnsp")
+hframes = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=576415570]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_6t5aa")
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="aim_line" type="Line2D" parent="." unique_id=640125933]
 width = 1.0
 default_color = Color(0.7254902, 0.67058825, 0.5647059, 1)
 texture_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=808938412]
+libraries/ = SubResource("AnimationLibrary_vgqql")
+autoplay = &"idle"
