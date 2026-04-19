@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bkxbknd6xsw0p" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://dfjbib2ekfv63" path="res://Art/human1-Sheet.png" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://boxkn8law1714" path="res://Bleeps/jump.wav" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://c4jxbrral2wud" path="res://Bleeps/dash.wav" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 radius = 4.0
@@ -20,6 +22,40 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3smsa"]
+resource_name = "dash"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+resource_name = "fall"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
 }
 
 [sub_resource type="Animation" id="Animation_6t5aa"]
@@ -71,12 +107,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [9, 10, 11, 12]
+"values": [10, 11, 12, 13]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vgqql"]
 _data = {
 &"RESET": SubResource("Animation_cvnsp"),
+&"dash": SubResource("Animation_3smsa"),
+&"fall": SubResource("Animation_x3wgy"),
 &"idle": SubResource("Animation_6t5aa"),
 &"jump": SubResource("Animation_vgqql"),
 &"run": SubResource("Animation_fkybt")
@@ -87,7 +125,7 @@ script = ExtResource("1_v0iea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1132778825]
 texture = ExtResource("2_cvnsp")
-hframes = 13
+hframes = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=576415570]
 position = Vector2(0, -2)
@@ -101,3 +139,11 @@ texture_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=808938412]
 libraries/ = SubResource("AnimationLibrary_vgqql")
 autoplay = &"idle"
+
+[node name="jump" type="AudioStreamPlayer" parent="." unique_id=2036315543]
+stream = ExtResource("3_6t5aa")
+bus = &"SFX"
+
+[node name="dash" type="AudioStreamPlayer" parent="." unique_id=443033359]
+stream = ExtResource("4_vgqql")
+bus = &"SFX"

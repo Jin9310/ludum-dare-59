@@ -1,17 +1,57 @@
 [gd_scene format=3 uid="uid://ycwhnf6y1xj6"]
 
 [ext_resource type="Script" uid="uid://w3n7okmhavmv" path="res://Scripts/signal_lost.gd" id="1_72hd6"]
-[ext_resource type="Texture2D" uid="uid://pydl30ykyg2y" path="res://Art/icon.svg" id="1_hyr48"]
+[ext_resource type="Texture2D" uid="uid://cte0e52l0krrg" path="res://Art/lost_signal-Sheet.png" id="2_raaxw"]
+[ext_resource type="AudioStream" uid="uid://c7hymkr3d31k7" path="res://Bleeps/nosignal.wav" id="3_raaxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72hd6"]
-radius = 7.0
+radius = 8.062258
+
+[sub_resource type="Animation" id="Animation_hmeye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_raaxw"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hmeye"]
+_data = {
+&"RESET": SubResource("Animation_hmeye"),
+&"idle": SubResource("Animation_raaxw")
+}
 
 [node name="Signal_lost" type="Area2D" unique_id=2030204222]
 script = ExtResource("1_72hd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440204879]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_hyr48")
+texture = ExtResource("2_raaxw")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1472806370]
 shape = SubResource("CircleShape2D_72hd6")
@@ -19,6 +59,14 @@ shape = SubResource("CircleShape2D_72hd6")
 [node name="Timer" type="Timer" parent="." unique_id=124991020]
 wait_time = 5.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1379099124]
+stream = ExtResource("3_raaxw")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=276918739]
+libraries/ = SubResource("AnimationLibrary_hmeye")
+autoplay = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

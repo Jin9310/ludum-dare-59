@@ -3,6 +3,8 @@ extends Node2D
 var platform = preload("res://Scenes/floor.tscn")
 var counter: int = 0
 var speed_up: int = 10
+var item_score: int = 15
+var mult: int = 1
 
 @onready var timer: Timer = $Timer
 
@@ -15,6 +17,7 @@ func _on_timer_timeout():
 	spawn_platform()
 	if counter >= speed_up:
 		if GameManager.current_platform_speed <= 60:
+			GameManager.get_score(item_score, mult)
 			GameManager.current_platform_speed += GameManager.speed_incremet
 			counter = 0 
 

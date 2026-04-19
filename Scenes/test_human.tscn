@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://du85mpc4ixujr"]
+
+[ext_resource type="Script" uid="uid://blxk1fpey83y6" path="res://Scripts/test_human.gd" id="1_pmgyw"]
+[ext_resource type="Texture2D" uid="uid://cwoxokpxulu7f" path="res://Art/human1.png" id="2_gyx1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efdxf"]
+size = Vector2(8, 21)
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "jump"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmgyw"]
+_data = {
+&"RESET": SubResource("Animation_cvnsp"),
+&"idle": SubResource("Animation_6t5aa"),
+&"jump": SubResource("Animation_vgqql"),
+&"run": SubResource("Animation_fkybt")
+}
+
+[node name="test_human" type="CharacterBody2D" unique_id=367219534]
+script = ExtResource("1_pmgyw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=335394600]
+texture = ExtResource("2_gyx1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=193403046]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_efdxf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=142069407]
+libraries/ = SubResource("AnimationLibrary_pmgyw")
+autoplay = &"idle"

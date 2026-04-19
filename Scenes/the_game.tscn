@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://2ovgnrpdhxte" path="res://Art/monitor_c.png" id="7_75ick"]
 [ext_resource type="Shader" uid="uid://bpyx8w7o5p4yd" path="res://mon_d.gdshader" id="8_j2uu3"]
 [ext_resource type="Texture2D" uid="uid://1xqh3s447lab" path="res://Art/monitor_d.png" id="9_75ick"]
+[ext_resource type="AudioStream" uid="uid://n2bj4aowhblj" path="res://Bleeps/new_song.wav" id="11_dfgnd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_04a8t"]
 shader = ExtResource("4_o1oej")
@@ -110,6 +111,37 @@ color = Color(0.03529412, 0.039215688, 0.078431375, 1)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=635258721]
 
+[node name="gameover_ui" type="Control" parent="UI" unique_id=654039320]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="final_score_name" type="Label" parent="UI/gameover_ui" unique_id=1638561674]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 110.0
+offset_right = 200.0
+offset_bottom = 125.0
+text = "Final score: "
+
+[node name="final_score_number" type="Label" parent="UI/gameover_ui" unique_id=693015573]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 120.0
+offset_right = 286.0
+offset_bottom = 135.0
+text = "105241"
+
+[node name="Label" type="Label" parent="UI/gameover_ui" unique_id=1810664851]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 28.0
+offset_right = 287.0
+offset_bottom = 43.0
+text = "[Enter] to continue"
+
 [node name="Control" type="Control" parent="UI" unique_id=454246751]
 layout_mode = 3
 anchors_preset = 15
@@ -118,19 +150,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/Control" unique_id=1856868801]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/CenterContainer" unique_id=2042416125]
-layout_mode = 2
-
-[node name="play_btn" type="Button" parent="UI/Control/CenterContainer/VBoxContainer" unique_id=175945086]
-layout_mode = 2
+[node name="play_btn" type="Button" parent="UI/Control" unique_id=175945086]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 40.0
+offset_right = 129.0
+offset_bottom = 63.0
 text = "PLAY"
 
-[connection signal="pressed" from="UI/Control/CenterContainer/VBoxContainer/play_btn" to="." method="_on_button_pressed"]
+[node name="Ingame_ui" type="Control" parent="UI" unique_id=1044789587]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="score_lbl" type="Label" parent="UI/Ingame_ui" unique_id=1497695886]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 32.0
+offset_right = 261.0
+offset_bottom = 47.0
+text = "score: 123456"
+
+[node name="Music_loop" type="AudioStreamPlayer2D" parent="." unique_id=545754805]
+stream = ExtResource("11_dfgnd")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="UI/Control/play_btn" to="." method="_on_button_pressed"]

@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dnfh86t644bgx" path="res://Scenes/wall.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://ck42aers0lopy" path="res://Scenes/kill_zone.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ycwhnf6y1xj6" path="res://Scenes/signal_lost.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://byrso76di2ti3" path="res://Scenes/coin.tscn" id="7_6bp64"]
 
-[node name="Main" type="Node2D" unique_id=843892690]
+[node name="Main" type="Node2D" unique_id=843892690 groups=["main"]]
 
 [node name="Player" parent="." unique_id=1186402769 instance=ExtResource("1_8gbba")]
 position = Vector2(169, 75)
@@ -41,4 +42,7 @@ position = Vector2(292, 91)
 [node name="KillZone" parent="." unique_id=1671372075 instance=ExtResource("5_kry3j")]
 
 [node name="Signal_lost" parent="." unique_id=2030204222 instance=ExtResource("6_21xkr")]
-position = Vector2(228, 87)
+position = Vector2(108, 46)
+
+[node name="Coin" parent="." unique_id=719929325 instance=ExtResource("7_6bp64")]
+position = Vector2(225, 28)

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://byrso76di2ti3"]
+
+[ext_resource type="Texture2D" uid="uid://dg25yn2klpy42" path="res://Art/coin-Sheet.png" id="1_2qo34"]
+[ext_resource type="Script" uid="uid://bj4j73w5gccwa" path="res://Scripts/coin.gd" id="1_jgi06"]
+[ext_resource type="AudioStream" uid="uid://d25u5ovp26o0q" path="res://Bleeps/pickup.wav" id="3_g537i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2qo34"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_jgi06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2qo34"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgi06"]
+_data = {
+&"RESET": SubResource("Animation_jgi06"),
+&"idle": SubResource("Animation_2qo34")
+}
+
+[node name="Coin" type="Area2D" unique_id=719929325 groups=["coin"]]
+script = ExtResource("1_jgi06")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=175013604]
+texture = ExtResource("1_2qo34")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=551201403]
+shape = SubResource("CircleShape2D_2qo34")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1498250440]
+libraries/ = SubResource("AnimationLibrary_jgi06")
+autoplay = &"idle"
+
+[node name="Timer" type="Timer" parent="." unique_id=1710375149]
+wait_time = 10.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1911019620]
+stream = ExtResource("3_g537i")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

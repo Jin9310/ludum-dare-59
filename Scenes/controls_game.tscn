@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c8xdma8472diu"]
+
+[ext_resource type="Script" uid="uid://bxxn6w7yo062x" path="res://Scripts/controls_game.gd" id="1_gh8bb"]
+[ext_resource type="PackedScene" uid="uid://dnfh86t644bgx" path="res://Scenes/wall.tscn" id="2_ojapk"]
+[ext_resource type="PackedScene" uid="uid://c2mabg1tienpt" path="res://Scenes/whole_floor.tscn" id="3_mf1gy"]
+[ext_resource type="PackedScene" uid="uid://du85mpc4ixujr" path="res://Scenes/test_human.tscn" id="4_s420p"]
+
+[node name="ControlsGame" type="Node2D" unique_id=1864227829]
+script = ExtResource("1_gh8bb")
+
+[node name="Wall2" parent="." unique_id=869204284 instance=ExtResource("2_ojapk")]
+position = Vector2(275, 90)
+
+[node name="Wall" parent="." unique_id=1551307656 instance=ExtResource("2_ojapk")]
+position = Vector2(30, 90)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=677513572]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=327008479]
+z_index = -2
+offset_right = 461.0
+offset_bottom = 505.0
+color = Color(0.90588236, 0.8352941, 0.7019608, 1)
+
+[node name="whole_floor" parent="." unique_id=1224155618 instance=ExtResource("3_mf1gy")]
+position = Vector2(113, 167)
+
+[node name="whole_floor2" parent="." unique_id=211229877 instance=ExtResource("3_mf1gy")]
+position = Vector2(192, 167)
+
+[node name="whole_floor3" parent="." unique_id=864290352 instance=ExtResource("3_mf1gy")]
+position = Vector2(150, 118)
+
+[node name="Human1" parent="." unique_id=367219534 instance=ExtResource("4_s420p")]
+position = Vector2(140, 150)
