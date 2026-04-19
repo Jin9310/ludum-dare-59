@@ -56,10 +56,11 @@ func _physics_process(delta: float) -> void:
 
 	# -- Flip sprite --
 	sprite_2d.flip_h = last_direction < 0.0
-
-	_handle_input(delta)
-	move_and_slide()
-	_handle_wall_bounce()
+	
+	if GameManager.game_started:
+		_handle_input(delta)
+		move_and_slide()
+		_handle_wall_bounce()
 
 func _handle_input(delta: float) -> void:
 	# -- Jump --

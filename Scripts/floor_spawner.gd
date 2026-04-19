@@ -19,7 +19,9 @@ func _on_timer_timeout():
 			counter = 0 
 
 func spawn_platform():
-	var plat = platform.instantiate()
-	var rand_pos = randi_range(50, 250)
-	plat.position.x = rand_pos
-	add_child(plat)
+	if GameManager.game_started:
+		if not GameManager.game_over:
+			var plat = platform.instantiate()
+			var rand_pos = randi_range(50, 250)
+			plat.position.x = rand_pos
+			add_child(plat)

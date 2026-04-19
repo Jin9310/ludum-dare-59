@@ -12,6 +12,8 @@ extends Node2D
 # shader na CRT efekty
 # chybi dostavat body!
 
+@onready var play_btn: Button = $UI/Control/CenterContainer/VBoxContainer/play_btn
+@onready var control: Control = $UI/Control
 
 
 @onready var viewport := $GameViewport
@@ -41,3 +43,22 @@ func hide_or_display(monitor_number: int):
 		monitors[monitor_number].visible = false
 	else:
 		monitors[monitor_number].visible = true
+
+func _on_monitors_changed(count: int) -> void:
+	for i in monitors.size():
+		var mat = monitors[i].material as ShaderMaterial
+		if i >= count:
+			# Animate shutoff_progress from 0 to 1 over 1 second
+			var tween = create_tween()
+			tween.tween_method(
+				func(v): mat.set_shader_parameter("shutoff_progress", v),
+				0.0, 1.0, 1.0
+			)
+		else:
+			mat.set_shader_parameter("shutoff_progress", 0.0)
+
+
+func _on_button_pressed() -> void:
+	control.visible = false
+	GameManager.game_started = true
+	GameManager.game_over = false

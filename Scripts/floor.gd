@@ -10,4 +10,5 @@ func _ready():
 	
 
 func _physics_process(delta):
-	position.y += GameManager.current_platform_speed * delta
+	if GameManager.game_started:
+		position.y += GameManager.current_platform_speed * delta

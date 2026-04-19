@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://byc2hrk1gj5uc"]
+
+[ext_resource type="FontFile" uid="uid://ddtmeuh2un6qg" path="res://snuggle_large.ttf" id="1_y0ey7"]
+
+[resource]
+default_font = ExtResource("1_y0ey7")
