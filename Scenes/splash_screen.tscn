@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://fnas1msiwow8"]
+
+[ext_resource type="Script" uid="uid://bmsib074oc35c" path="res://Scenes/splash_screen.gd" id="1_6b1b0"]
+[ext_resource type="Texture2D" uid="uid://c0g2dxi7qypdp" path="res://Art/brdy_games.png" id="2_wwf30"]
+
+[node name="Node2D" type="Node2D" unique_id=2022673923]
+script = ExtResource("1_6b1b0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=982827783]
+z_index = -1
+offset_left = -24.0
+offset_top = -23.0
+offset_right = 337.0
+offset_bottom = 201.0
+color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637737132]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(159, 86)
+texture = ExtResource("2_wwf30")
+
+[node name="Timer" type="Timer" parent="." unique_id=557581286]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

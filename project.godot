@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="ludumDare59"
-run/main_scene="uid://dy6dd0hr3iawu"
+run/main_scene="uid://fnas1msiwow8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0.90588236, 0.8352941, 0.7019608, 1)
 config/icon="res://Art/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://2v07yty0bkhu"
 
 [autoload]
 
